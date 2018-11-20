@@ -40,3 +40,19 @@ Uma placa de carro nesse formato por exemplo SEAS-2345
 Buscar nesta lista todos os alunos aprovados que tirarem notas entre 7.2 e 7.9  
 9.8 - Robson, 7.1 - Teresa, 4.5 - Armênio, 6.5 - Zulu, 7.7 - Stefania, 7.8, 5.0 - Romeu, 7.2 - Pompilho, 3.1 - Reinaldo, 7.3 - Bernadete, 4.7 - Cinério  
 A expressao deve ficar dessa maneira: 7.[2-9]\s+-\s[A-Z][a-z]+  
+#### Nem tudo dentro de uma classe e um meta character  
+dado o seguinte alvo: ?classes+poderosas*, para fazer essa busca devemos fazer dessa maneira [a-z?*+]+, todos os elementos colocados dentro da classe são considerados como string comum.Apenas os caracteres \ (barra invertida), - (hífen) e ^ (circunflexo) realmente são meta-chars dentro de uma classe.  
+### Classes
+Podemos definir facilmente a classe de qualquer caractere com o [A-Z].  
+Conhecemos todos os quantifiers como ?, +, * e {n}.  
+\s significa whitespace e é um atalho para [ \t\r\n\f].  
+\w significa word char e é uma atalho para [A-Za-z0-9_].  
+### Ancoras \b, \b\b, ^, $  
+São basicamente um forma de encontrar um um conjunto de caracteres de uma maneira bem mais específica.  
+\b\b, Pega um conjunto de caracteres específicos  
+ex: aaa aaaa aaaa  
+Queremos encontrar o conjunto com exatamente 3 a. Poderíamos simplesmente bucar pelos três aaa, mas isso retornaria todos os três as que existem na string que estamos buscando, não é isso o que queremos, então utilizamos as ancoras. Que sao representadas com \baaa\b nao pode ter caracteres no inicio nem no fim fora de uma palavra ja \baaa\b deve estar dentro de uma palavra.E o \B\B, diz que o caractere deve estar entre alguma coisa.  
+^, Define que determinado caractere ou conjunto de caracteres deve estar no início.  
+$, define que determinado caractere ou conjunto de caracteres deve estar no final.  
+Ex: https://www.google.com.br/, definir que esse deve ser o tipo de URL utilizada  
+^https.+\.br$
